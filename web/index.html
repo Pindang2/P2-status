@@ -1,16 +1,76 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>P2-status</title>
+    <title>P2-status — 자리비움 디스플레이</title>
+    <meta name="description" content="자리를 비울 때 화면에 띄워둘 상태 디스플레이를 쉽게 만들고 관리하세요. 프리셋 기반 빠른 전환, 전체화면 뷰어 지원." />
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
-    <main class="container">
-      <h1>P2-status</h1>
-      <p>GitHub Pages starter page.</p>
-    </main>
+    <div class="page-wrapper">
+      <!-- Navbar -->
+      <nav class="navbar" id="navbar">
+        <div class="container">
+          <a href="./" class="navbar-brand">
+            💤 <span>P2-status</span>
+          </a>
+          <div class="navbar-links">
+            <a href="./" class="active">홈</a>
+            <a href="./editor.html">에디터</a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Hero -->
+      <section class="hero" id="hero">
+        <h1 class="text-hero">자리비움 디스플레이</h1>
+        <p class="text-subtitle">
+          자리를 비울 때 화면에 띄워둘 상태 슬라이드를 만들고,<br />
+          복귀하면 즉시 종료. 프리셋으로 빠르게 전환하세요.
+        </p>
+        <div class="hero__actions">
+          <button class="btn btn-primary btn-lg" id="btn-new-preset">
+            ✨ 새 프리셋 만들기
+          </button>
+          <button class="btn btn-secondary btn-lg" id="btn-import">
+            📥 가져오기
+          </button>
+        </div>
+      </section>
+
+      <!-- Preset List -->
+      <main class="container">
+        <section class="section" id="presets-section">
+          <div class="section__header">
+            <h2 class="section__title">내 프리셋</h2>
+            <div class="flex gap-sm">
+              <button class="btn btn-ghost btn-sm" id="btn-export-all" title="전체 백업">
+                📤 전체 내보내기
+              </button>
+            </div>
+          </div>
+
+          <!-- Card Grid (dynamically rendered) -->
+          <div class="card-grid stagger" id="preset-grid">
+            <!-- JS에서 렌더링 -->
+          </div>
+
+          <!-- Empty state -->
+          <div class="empty-state" id="empty-state" style="display: none;">
+            <div class="empty-state__icon">📭</div>
+            <p class="empty-state__text">아직 프리셋이 없습니다.<br/>새 프리셋을 만들어보세요!</p>
+            <button class="btn btn-primary" id="btn-empty-new">✨ 새 프리셋 만들기</button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Hidden file input for import -->
+    <input type="file" id="import-input" accept=".json" style="display:none" />
+
+    <script src="./assets/js/storage.js"></script>
     <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/home.js"></script>
   </body>
 </html>

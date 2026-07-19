@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>에디터 — P2-status</title>
+    <meta name="description" content="자리비움 슬라이드 프리셋을 제작하고 편집합니다." />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="editor-layout" id="editor-layout">
+      <!-- Toolbar -->
+      <header class="editor-toolbar">
+        <div class="editor-toolbar__left">
+          <button class="btn btn-ghost btn-icon" id="btn-back" title="홈으로">←</button>
+          <input
+            type="text"
+            class="editor-toolbar__title-input"
+            id="preset-name"
+            value="새 프리셋"
+            placeholder="프리셋 이름"
+            spellcheck="false"
+          />
+          <span class="save-indicator" id="save-indicator">저장됨</span>
+        </div>
+        <div class="editor-toolbar__right">
+          <button class="btn btn-ghost btn-sm" id="btn-export" title="내보내기">📤 내보내기</button>
+          <button class="btn btn-primary btn-sm" id="btn-preview" title="뷰어에서 실행">▶ 실행</button>
+        </div>
+      </header>
+
+      <!-- Sidebar: Slide List -->
+      <aside class="editor-sidebar" id="sidebar">
+        <div class="editor-sidebar__header">
+          <span class="editor-sidebar__header-label">슬라이드</span>
+          <button class="btn btn-ghost btn-sm" id="btn-add-slide" title="슬라이드 추가">＋</button>
+        </div>
+        <div id="slide-list">
+          <!-- JS에서 렌더링 -->
+        </div>
+      </aside>
+
+      <!-- Canvas: Live Preview -->
+      <section class="editor-canvas" id="canvas-area">
+        <div class="canvas-frame" id="canvas-frame">
+          <div class="canvas-frame__emoji" id="canvas-emoji"></div>
+          <div class="canvas-frame__text" id="canvas-text"></div>
+          <div class="canvas-frame__timer" id="canvas-timer"></div>
+        </div>
+      </section>
+
+      <!-- Properties Panel -->
+      <aside class="editor-props" id="props-panel">
+        <!-- 배경 -->
+        <div class="props-section">
+          <div class="props-section__title">배경</div>
+          <div class="bg-tabs" id="bg-tabs">
+            <button class="bg-tab active" data-bg="solid">단색</button>
+            <button class="bg-tab" data-bg="gradient">그라데이션</button>
+            <button class="bg-tab" data-bg="image">이미지</button>
+          </div>
+          <div id="bg-controls">
+            <!-- JS에서 동적 렌더링 -->
+          </div>
+        </div>
+
+        <!-- 텍스트 -->
+        <div class="props-section">
+          <div class="props-section__title">텍스트</div>
+          <div class="form-group">
+            <label class="form-label" for="slide-text">사유 텍스트</label>
+            <input type="text" class="input" id="slide-text" placeholder="예: 잠시 자리 비움" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="slide-fontsize">글자 크기</label>
+            <div class="flex items-center gap-sm">
+              <input type="range" id="slide-fontsize" min="1" max="10" step="0.5" value="4" style="flex:1" />
+              <span id="fontsize-value" class="text-muted" style="min-width:3.5rem;text-align:right">4rem</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">글자 색상</label>
+            <div class="color-picker-wrap">
+              <input type="color" id="slide-textcolor" value="#ffffff" />
+              <input type="text" class="input" id="slide-textcolor-hex" value="#ffffff" style="flex:1" />
+            </div>
+          </div>
+        </div>
+
+        <!-- 이모지 -->
+        <div class="props-section">
+          <div class="props-section__title">이모지</div>
+          <div class="form-group">
+            <input type="text" class="input" id="slide-emoji" placeholder="이모지 입력 (예: 💤)" />
+          </div>
+          <div class="flex gap-xs" style="flex-wrap:wrap" id="emoji-quick">
+            <!-- 빠른 선택 이모지 -->
+          </div>
+        </div>
+
+        <!-- 타이머 -->
+        <div class="props-section">
+          <div class="props-section__title">타이머</div>
+          <div class="toggle-wrap">
+            <input type="checkbox" class="toggle" id="timer-enabled" />
+            <span class="text-secondary" style="font-size:var(--fs-sm)">복귀 시각 표시</span>
+          </div>
+          <div class="form-group" id="timer-settings" style="display:none; margin-top:var(--space-sm)">
+            <label class="form-label" for="timer-time">복귀 예정 시각</label>
+            <input type="time" class="input" id="timer-time" />
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <script src="./assets/js/storage.js"></script>
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/editor.js"></script>
+  </body>
+</html>

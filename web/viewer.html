@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>뷰어 — P2-status</title>
+    <meta name="description" content="자리비움 디스플레이를 전체화면으로 표시합니다." />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <style>
+      /* 뷰어 전용 — body 스크롤 방지 */
+      html, body { overflow: hidden; height: 100%; margin: 0; }
+    </style>
+  </head>
+  <body>
+    <!-- Viewer -->
+    <div class="viewer" id="viewer">
+      <!-- Current Slide -->
+      <div class="viewer__slide" id="viewer-slide">
+        <div class="viewer__slide-emoji" id="viewer-emoji"></div>
+        <div class="viewer__slide-text" id="viewer-text"></div>
+        <div class="viewer__slide-timer" id="viewer-timer"></div>
+      </div>
+
+      <!-- Overlay — Thumbnail Strip (top) -->
+      <div class="viewer__overlay" id="overlay">
+        <!-- JS에서 렌더링 -->
+      </div>
+
+      <!-- Grid View (full slide selector) -->
+      <div class="viewer__grid" id="grid-view">
+        <!-- JS에서 렌더링 -->
+      </div>
+
+      <!-- Exit Button -->
+      <button class="viewer__exit" id="btn-exit" title="닫기 (ESC)">✕</button>
+    </div>
+
+    <script src="./assets/js/storage.js"></script>
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/viewer.js"></script>
+  </body>
+</html>
